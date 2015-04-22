@@ -1,6 +1,7 @@
 {
   "run_list" : [
     "recipe[timezone]",
+    "recipe[lib_for_ruby]",
     "recipe[mysql]",
     "recipe[nginx]"
     ],
