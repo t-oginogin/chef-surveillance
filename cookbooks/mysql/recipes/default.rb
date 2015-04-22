@@ -42,6 +42,7 @@ bash "secure_install" do
     mysql -u #{mysql_user} -e "SET PASSWORD FOR '#{mysql_user}'@'::1' = PASSWORD('#{mysql_password}');"
     mysql -u #{mysql_user} -e "SET PASSWORD FOR '#{mysql_user}'@'127.0.0.1' = PASSWORD('#{mysql_password}');"
     mysql -u #{mysql_user} -e "SET PASSWORD FOR '#{mysql_user}'@'localhost' = PASSWORD('#{mysql_password}');"
+    mysql -u #{mysql_user} -p#{mysql_password} -e "GRANT ALL PRIVILEGES ON *.* TO '#{mysql_user}'@'%';"
     mysql -u #{mysql_user} -p#{mysql_password} -e "flush privileges;"
   EOL
 end
