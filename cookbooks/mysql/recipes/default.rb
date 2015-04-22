@@ -21,7 +21,7 @@ template '/etc/mysql/my.cnf' do
   source 'my.cnf.erb'
   owner "#{mysql_user}"
   group "#{mysql_user}"
-  mode 644
+  mode '0644'
 
   variables ({
     :character_set_server => node['mysql']['character_set_server'],
