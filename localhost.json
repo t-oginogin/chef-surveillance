@@ -2,10 +2,16 @@
   "run_list" : [
     "recipe[timezone]",
     "recipe[lib_for_ruby]",
+    "recipe[rbenv]",
     "recipe[mysql]",
     "recipe[nginx]"
     ],
-  
+
+  "rbenv": {
+    "user": "vagrant",
+    "ruby_version": "2.2.2"
+  },
+
   "mysql": {
     "user": "root",
     "version": "5.6",
