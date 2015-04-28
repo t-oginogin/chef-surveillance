@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+nginx_user = node['nginx']['user']
+
 package 'nginx' do
   action :install
 end
@@ -24,6 +26,14 @@ bash 'delete share' do
   not_if { !(File.exists? '/usr/share/nginx') }
   code <<-EOL
     rm -rf /usr/share/nginx
+  EOL
+end
+
+bash 'create www directory' do
+  user "#{nginx_user}"
+  code <<-EOL
+    sudo mkdir -pv /var/www
+    sudo chown -R #{nginx_user}:#{nginx_user} /var/www
   EOL
 end
 
