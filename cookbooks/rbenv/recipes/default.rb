@@ -39,10 +39,17 @@ bash 'install ruby' do
     rbenv install #{ruby_version}
     rbenv global #{ruby_version}
     rbenv rehash
+    sudo chown -R #{rbenv_user}:#{rbenv_user} $HOME/.rbenv
   EOL
 end
 
-gem_package 'bundler' do
-  options('--no-ri --no-rdoc')
-  action :install
+bash 'install bundler and rails' do
+  user "#{rbenv_user}"
+  code <<-EOL
+    source $HOME/.bash_profile
+    rbenv global #{ruby_version}
+    gem install bundler --no-ri --no-rdoc
+    gem install rails --no-ri --no-rdoc
+    rbenv rehash
+  EOL
 end
