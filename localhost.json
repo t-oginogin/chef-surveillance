@@ -17,5 +17,9 @@
     "version": "5.6",
     "password": "your_password",
     "character_set_server": "utf8"
+  },
+
+  "nginx": {
+    "user": "vagrant"
   }
 }
