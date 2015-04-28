@@ -19,8 +19,8 @@ end
 
 template '/etc/mysql/my.cnf' do
   source 'my.cnf.erb'
-  owner "#{mysql_user}"
-  group "#{mysql_user}"
+  owner "root"
+  group "root"
   mode '0644'
 
   variables ({
@@ -33,7 +33,7 @@ service 'mysql' do
 end
 
 bash "secure_install" do
-  user "#{mysql_user}"
+  user "mysql"
   not_if "mysql -u #{mysql_user} -p#{mysql_password} -e 'show databases;'"
 
   code <<-EOL
