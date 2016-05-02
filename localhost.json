@@ -4,7 +4,8 @@
     "recipe[sysv-rc-conf]",
     "recipe[lib_for_ruby]",
     "recipe[rbenv]",
-    "recipe[nginx]"
+    "recipe[nginx]",
+    "recipe[font]"
     ],
 
   "rbenv": {
